@@ -42,7 +42,7 @@ print('')
 """4_Student"""
 studalfa=1-(alfa/2)
 print('studalfa:     {:1.3f}    n-1:   {:1.0f} \t'.format(studalfa,n-1))
-##student = input('Inserisci student: ')
+
 student=2.26216
 print('student:     {:1.5f}  \t'.format(student))
 
@@ -63,16 +63,17 @@ chi1meno=19.02277
 chialfa=2.70039
 print ('chi1-α/2:     {:1.3f}\t'.format(chi1meno))
 print ('chiα/2:     {:1.3f}\t'.format(chialfa))
-
 Usigma= ((n-1)*varc)/chi1meno
 Vsigma=((n-1)*varc)/chialfa
-
-print('Interv fiducia varianza :             {:1.3f}  {:1.3f}\t'.format(Usigma,Vsigma))
+print ('Usigma:     {:1.3f}\t'.format(Usigma))
+print ('Vsigma:     {:1.3f}\t'.format(Vsigma))
+print('Interv fiducia varianza :             {:1.3f},{:1.3f}\t'.format(Usigma,Vsigma))
 
 print('------------------------------------------')
 
 print('3 Test bilaterale di student(no varianza) di livello alfa')
 med_o=0
+print('uo:             {}'.format(med_o))
 To=((med-med_o)/devstdd)*np.sqrt(n)
 print('|To|:                     {:1.3f}  \t'.format(np.abs(To)))
 print('quantile normale gauss: {:1.3f}  \t'.format(student))
@@ -83,5 +84,5 @@ else:
     print('rifiuto Ho')
 
 """3__calcolabilita test alfa di s"""
-##alfas=2*(1-)
+
 

@@ -1,28 +1,40 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Fri Mar 15 16:25:48 2019
-
-@author: mirco
-""STATISTICA DESCRITTIVA_con frequneze"""
-
 import copy
 import numpy as np
-import math as mt
 from scipy.stats.mstats import gmean
 
 
+arrl=np.array([5,4,5,4,4,1,5,6,5,4,2,3,7,5,3,3,4,3,4])
 
-arr= np.array([1,2,3,4,5,6,7,8,9,10,11])
-freq=np.array([2,11,15,18,20,14,10,5,2,2,1])
+'''0_trasformazione in array + freq'''
+arrl.sort()
 
+
+arr=list(set(arrl))
+freq=[]
+for i in range(0, len(arr)):
+    freq.append(0)
+j=0
+for i in range(0,len(arrl)):
+    if arrl[i] == arr[j]:
+        freq[j]+=1
+    else:
+         j+=1
+         freq[j]+=1
+         
+   
+print ('array')
+print (arr)
+print ('frequenze')
+print(freq)
 
 """0_tabella frequenze"""
 k=copy.copy(arr)
 Nk=copy.copy(freq)
 print('Tabella frequenze')
-print('k:  {}  {}  {}   {}  {}  {}  {} {} {}  {} {}   \t' .format(*k))
-print('-------------------------------------------------')
-print('Nk  {}  {}  {}  {}   {}   {}   {}   {}  {}  {} {}  \t'.format(*Nk))
+print('k:  {}  {}  {}   {}  {}  {}  {}\t' .format(*k))
+print('------------------------------------')
+print('Nk  {}  {}  {}  {}  {}  {}   {}\t'.format(*Nk))
 Fk=[]
 for i in range(0, len(k)):
     Fk.append(0)
@@ -30,45 +42,41 @@ for i in range(0, len(k)):
 Fk[0]=Nk[0]
 for i in range(1, len(Nk)):
     Fk[i]=Nk[i]+Fk[i-1]
-print('Fk  {}  {}  {}  {}   {}  {}  {} {}  {}  {} {}   \t'.format(*Fk))
+print('Fk  {} {}  {} {} {}  {}  {}\t'.format(*Fk))
 print('------------------------------------')
 
 pk=copy.copy(Nk)
-max=Fk[len(freq)-1]
-for i in range(0, len(Fk)):
-    pk[i]= (pk[i]/ max)
-#print('pk  {:1.2f} {:1.2f} {:1.2f} {:1.2f} {:1.2f}  {:1.2f}  {:1.2f}  {:1.2f}  \t'.format(*pk))
+
+for i in range(0, len(Nk)):
+    pk[i]= pk[i]/Fk[len(freq)-1]    
+print('pk  {:1.3f} {:1.3f} {:1.3f} {:1.3f} {:1.3f}  {:1.3f}  {:1.3f}\t'.format(*pk))
 
 fk=copy.copy(Fk)
 for i in range(0, len(Fk)):
-    fk[i]= (fk[i]/ max)
-#print('fk  {:1.2f} {:1.2f} {:1.2f} {:1.3f} {:1.2f}  {:1.2f}  {:1.2f}  {:1.2f} \t\n'.format(*fk))
+    fk[i]= fk[i]/ Fk[len(freq)-1]
+print('fk  {:1.3f} {:1.3f} {:1.3f} {:1.3f} {:1.3f}  {:1.3f}  {:1.3f}\t\n'.format(*fk))
 
 
 n=len(arr)
 tot=np.sum(freq)
 
- 
+
+  
 """1_media """
-i=0
 sum=0
-while i<n:
-    sum+=(arr[i]*freq[i])
-    i=i+1    
+for i in range(0,n):
+    sum+=(arr[i]*freq[i])  
 med=(1/tot)*sum
 print('Media:                {:1.2f}\t'.format(med))
 
 
 """2_varianza"""
 """_media con i quadrati"""
-i=0
 sumq=0
-while i<n:
+for i in range(0,n):
     sumq+=((arr[i]**2)*freq[i])
-    i=i+1
-print(sumq)
 sumq=(1/tot)*sumq
-
+print(':             {:1.3f}\t'.format(sumq))
 var=sumq-(med**2)
 print('Varianza:             {:1.2f}\t'.format(var))
 
@@ -78,11 +86,13 @@ devstdd=np.sqrt(var)
 print('Deviazione standard:     {:1.2f}\t'.format(devstdd))
 
 
+
 """4_range"""
 print('Range: {:1.2f}\t\n'.format(arr[len(arr)-1]-arr[0]))
 
+
 """5-mediana"""
-print('Tot (pari):          {}\t'.format(tot))
+print('Tot (dispari):          {}\t'.format(tot))
 
 mediana=((tot+1)/2)
 print('Quantile mediana dispari:      {}\t'.format(mediana))
@@ -114,3 +124,37 @@ for i in range(0, len(Fk)):
         quartile_3=k[i]
         break
 print('3_quartile:          {}\t\n'.format(quartile_3))
+
+
+"""7_media armonica"""
+
+arm=0
+for i in range(0, n):
+    arm+=((1/arr[i])*freq[i])
+arm=tot/arm
+print('Media armonica:          {:1.2f}\t'.format(arm))
+
+"""8_media quadratica"""
+sumq=0
+for i in range(0, n):
+    sumq+=freq[i]*(np.power(arr[i],2))
+sumq=(1/tot)*sumq
+quad=np.sqrt(sumq)
+print('Media quadratica:       {:1.2f}\t'.format(quad))
+
+"""9_media geometrica"""
+
+geom=gmean(arrl)
+
+print('Media geometrica:         {:1.2f}\t'.format(geom))
+
+
+
+
+
+
+
+
+
+
+

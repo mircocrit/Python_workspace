@@ -59,6 +59,7 @@ print('------------------------------------------')
 
 print('2 Test bilaterale di student(no varianza) di livello alfa')
 med_o=3
+print('uo:             {}'.format(med_o))
 To=((med-med_o)/devstdd)*np.sqrt(n)
 print('|To|:                     {:1.3f}  \t'.format(np.abs(To)))
 print('quantile student: {:1.3f}  \t'.format(student))
@@ -69,5 +70,5 @@ else:
     print('rifiuto Ho')
 
 """3__calcolabilita test alfa di s"""
-##alfas=2*(1-)
+
 

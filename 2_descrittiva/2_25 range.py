@@ -76,51 +76,51 @@ tot=np.sum(freq)
   
 """1_media """
 i=0
+buf=0
 sum=0
 while i<n:
     sum+=arrl[i]
     i=i+1
+    if i%10==0:         
+        print(sum-buf)
+        buf=sum
+print('sum:{:1.4f}\t'.format(sum))
 med=(1/n)*sum
 print('Media:                {:1.2f}\t'.format(med))
+
 
 
 """2_range"""
 print('Range:                {:1.2f}\t\n'.format(arrl[len(arrl)-1]-arrl[0]))
 
 
-"""3-mediana"""
+"""3-mediana pari"""
+
 print('Tot (pari):          {}\t'.format(tot))
 
-mediana=((tot+1)/2)
-print('Quantile mediana dispari:      {}\t'.format(mediana))
-flag=0
-for i in range(0, len(Fk)):
-    if mediana<= Fk[i]:
-        mediana=k[i]
-        break
-print('Mediana :      {:1.2f}\t'.format(mediana))
+mediana=((tot)/2)
+print('Quantile mediana pari:      {}\t'.format(mediana))
+mediana=arrl[int(mediana-1)] + arrl[int(mediana)]
+mediana=mediana/2
+
+print('Mediana :      {:1.3f}\t'.format(mediana))
 
 
 
 
-"""4-1_quartile"""
+"""4-1_quartile pari"""
 quartile_1= (tot+1)/4
-flag=0
-for i in range(0, len(Fk)):
-    if quartile_1<= Fk[i]:
-        quartile_1=k[i]
-        break
-print('1_quartile:          {}\t'.format(quartile_1))
+quartile_1=arrl[int(quartile_1-1)] + arrl[int(quartile_1)]
+quartile_1=quartile_1/2
+print('1_quartile:          {:1.3f}\t'.format(quartile_1))
 
-"""4-3_quartile"""
+"""4-3_quartile pari"""
 
-quartile_3= 3* ((tot+1)/4)
-flag=0
-for i in range(0, len(Fk)):
-    if quartile_3<= Fk[i]:
-        quartile_3=k[i]
-        break
-print('3_quartile:          {}\t\n'.format(quartile_3))
+quartile_3= 3*((tot+1)/4)
+quartile_3=arrl[int(quartile_3-1)] + arrl[int(quartile_3)]
+quartile_3=quartile_3/2
+print('3_quartile:          {:1.3f}\t\n'.format(quartile_3))
+
 
 print('istogramma')
 """altezze"""
@@ -176,16 +176,24 @@ print('')
 
 m_x=0
 for i in range(0, len(w_k)):
+    print(w_k[i]*Nk[i])
     m_x+=(w_k[i]*Nk[i]) 
-
+print('sum: {} '.format(m_x))
 m_x=(1/tot)*m_x
 print('Media approssimata:          {:1.2f}\t'.format(m_x))
 
 
 """7 varianza approssimata"""
 
-s_x2=0
+"""_media con i quadrati"""
+
+sumq=0
 for i in range(0, len(w_k)):
-   s_x2+=(np.power((w_k[i]-m_x),2))*Nk[i]
-s_x2=(1/tot)*s_x2
+    print((np.power((w_k[i]),2))*Nk[i])
+    sumq+=(np.power((w_k[i]),2))*Nk[i]
+print(sumq)
+sumq=(1/tot)*sumq
+print(sumq)
+
+s_x2=sumq-(m_x**2)
 print('Varianza approssimata:          {:1.2f}\t'.format(s_x2))

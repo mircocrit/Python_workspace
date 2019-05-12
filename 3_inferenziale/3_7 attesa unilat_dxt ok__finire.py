@@ -43,7 +43,6 @@ print('')
 """4_Student"""
 studalfa=1-(alfa/2)
 print('studalfa:     {:1.3f}    n-1:   {:1.0f} \t'.format(studalfa,n-1))
-##student = input('Inserisci student: ')
 student=2.262
 print('student:     {:1.5f}  \t'.format(student))
 

@@ -37,12 +37,12 @@ pk=copy.copy(Nk)
 max=Fk[len(freq)-1]
 for i in range(0, len(Fk)):
     pk[i]= (pk[i]/ max)
-print('pk  {:1.2f} {:1.2f} {:1.2f} {:1.2f} {:1.2f}  {:1.2f}  {:1.2f}  {:1.2f}  \t'.format(*pk))
+#print('pk  {:1.2f} {:1.2f} {:1.2f} {:1.2f} {:1.2f}  {:1.2f}  {:1.2f}  {:1.2f}  \t'.format(*pk))
 
 fk=copy.copy(Fk)
 for i in range(0, len(Fk)):
     fk[i]= (fk[i]/ max)
-print('fk  {:1.2f} {:1.2f} {:1.2f} {:1.3f} {:1.2f}  {:1.2f}  {:1.2f}  {:1.2f} \t\n'.format(*fk))
+#print('fk  {:1.2f} {:1.2f} {:1.2f} {:1.3f} {:1.2f}  {:1.2f}  {:1.2f}  {:1.2f} \t\n'.format(*fk))
 
 
 n=len(arr)
@@ -54,7 +54,8 @@ i=0
 sum=0
 while i<n:
     sum+=(arr[i]*freq[i])
-    i=i+1    
+    i=i+1  
+print(sum)
 med=(1/tot)*sum
 print('Media:                {:1.2f}\t'.format(med))
 
@@ -66,6 +67,7 @@ sumq=0
 while i<n:
     sumq+=((arr[i]**2)*freq[i])
     i=i+1
+print(sumq)
 sumq=(1/tot)*sumq
 
 var=sumq-(med**2)

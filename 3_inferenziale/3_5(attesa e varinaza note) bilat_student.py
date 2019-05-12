@@ -26,19 +26,16 @@ print('')
 """4_Student"""
 studalfa=1-(alfa/2)
 print('studalfa:     {:1.3f}    n-1:   {:1.0f} \t'.format(studalfa,n-1))
-##student = input('Inserisci student: ')
+
 student=2.58
 print('student:(uguale a normale standard)     {:1.5f}  \t'.format(student))
 
-"""5_delta"""
-delta=((devstdd)/(np.sqrt(n)))*student
-print('Delta:      {:1.3f}\t'.format(delta))
-print('Intervallo:      {:1.3f} +/- {:1.3f} \t'.format(med,delta))
 
 print('--------------------------------------------')
 
 """2__test bilaterale di student(no varianza) di livello alfa"""
 med_o=34
+print('uo:             {}'.format(med_o))
 To=((med-med_o)/devstdd)*np.sqrt(n)
 print('|To|:                     {:1.3f}  \t'.format(np.abs(To)))
 print('quantile normale student/gauss: {:1.3f}  \t'.format(student))
@@ -49,5 +46,4 @@ else:
     print('rifiuto Ho')
 
 """3__calcolabilita test alfa di s"""
-##alfas=2*(1-)
 

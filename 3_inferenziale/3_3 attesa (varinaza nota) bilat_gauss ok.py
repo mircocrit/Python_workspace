@@ -1,3 +1,4 @@
+
 # -*- coding: utf-8 -*-
 """
 Created on Fri Mar 15 16:25:48 2019
@@ -49,6 +50,7 @@ print('2_Test bilaterale di gauss di livello alfa')
 """2__test bilaterale di gauss di livello alfa"""
 qnormale=1.96
 med_o=4
+print('uo:             {}'.format(med_o))
 Uo=((med-med_o)/devstdd)*np.sqrt(n)
 print('Uo:                     {:1.3f}  \t'.format(Uo))
 print('quantile normale gauss: {:1.3f}  \t'.format(qnormale))
@@ -62,7 +64,7 @@ print('3 significatività test alfa di s')
 """3__significatività test alfa di s"""
 print('Uo:                     {:1.3f}  \t'.format(np.abs(Uo)))
 fiUo=0.88877
-print('fi(Uo):                 {:1.3f}  \t'.format(fiUo))
+print('norm stdd(Uo):                 {:1.3f}  \t'.format(fiUo))
 alfas=2*(1-fiUo)
 print('alfas:                  {:1.3f}  \t'.format(alfas))
 

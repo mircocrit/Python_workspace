@@ -79,7 +79,8 @@ i=0
 sum=0
 while i<n:
     sum+=(arr[i]*freq[i])
-    i=i+1    
+    i=i+1
+print(sum)
 med=(1/tot)*sum
 print('Media:                {:1.2f}\t'.format(med))
 
@@ -91,6 +92,7 @@ sumq=0
 while i<n:
     sumq+=((arr[i]**2)*freq[i])
     i=i+1
+print(sumq)
 sumq=(1/tot)*sumq
 
 var=sumq-(med**2)
