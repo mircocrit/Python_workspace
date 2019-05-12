@@ -191,10 +191,11 @@ print('Media approssimata:          {:1.2f}\t'.format(m_x))
 
 sumq=0
 for i in range(0, len(w_k)):
-   sumq+=(np.power((w_k[i]),2))*Nk[i]
-print(sumq)
+    print((np.power((w_k[i]),2))*Nk[i])
+    sumq+=(np.power((w_k[i]),2))*Nk[i]
+print('sumq: {} '.format(sumq))
 sumq=(1/tot)*sumq
-print(sumq)
+print('sumq/tot: {} '.format(sumq))
 
 s_x2=sumq-(m_x**2)
 print('Varianza approssimata:          {:1.2f}\t'.format(s_x2))

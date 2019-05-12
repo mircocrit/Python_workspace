@@ -66,12 +66,12 @@ pk=copy.copy(Nk)
 
 for i in range(0, len(Nk)):
     pk[i]= pk[i]/Fk[len(freq)-1]    
-print('pk  {:1.3f} {:1.3f} {:1.3f} {:1.3f} {:1.3f} \t'.format(*pk))
+print('pk  {:1.3f} {:1.3f} {:1.3f} {:1.3f} {:1.3f} {:1.3f} {:1.3f} {:1.3f} \t'.format(*pk))
 
 fk=copy.copy(Fk)
 for i in range(0, len(Fk)):
     fk[i]= fk[i]/ Fk[len(freq)-1]
-print('fk  {:1.3f} {:1.3f} {:1.3f} {:1.3f} {:1.3f}  \t\n'.format(*fk))
+print('fk  {:1.3f} {:1.3f} {:1.3f} {:1.3f} {:1.3f} {:1.3f} {:1.3f} {:1.3f}  \t\n'.format(*fk))
 
 
 n=len(arrl)
@@ -161,7 +161,7 @@ for i in range(0, len(freq)):
 for i in range(0, len(rang)-1):
     w_k[i]=((rang[i+1]+rang[i])/2)
 print('-------------------------------------------')  
-print('wk_: {} {} {} {} {} \t'.format(*w_k))
+print('wk_: {:1.2f} {:1.2f} {:1.2f} {:1.2f} {:1.2f} {:1.2f} {:1.2f} {:1.2f} \t'.format(*w_k))
 
 print('pk*wk_: ',end =" ")
 for i in range(0, len(rang)-1):
@@ -194,9 +194,10 @@ sumq=0
 for i in range(0, len(w_k)):
     print((np.power((w_k[i]),2))*Nk[i])
     sumq+=(np.power((w_k[i]),2))*Nk[i]
-print(sumq)
+print('sumq: {} '.format(sumq))
 sumq=(1/tot)*sumq
-print(sumq)
+print('sumq/tot: {} '.format(sumq))
+
 
 s_x2=sumq-(m_x**2)
 print('Varianza approssimata:          {:1.2f}\t'.format(s_x2))

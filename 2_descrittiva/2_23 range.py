@@ -45,10 +45,10 @@ k=copy.copy(rang)
 Nk=copy.copy(freq)
 print('Tabella frequenze')
 
-print('k:{} {} {} {}  {} {} \t' .format(*k))
+print('k:{} {} {} {}  {} {} {}\t' .format(*k))
 
 print('------------------------------------')
-print('Nk   {}   {}   {}   {}   {}      \t'.format(*Nk))
+print('Nk   {}   {}   {}   {}   {} {}     \t'.format(*Nk))
 Fk=[]
 for i in range(0, len(k)):
     Fk.append(0)
@@ -56,19 +56,19 @@ for i in range(0, len(k)):
 Fk[0]=Nk[0]
 for i in range(1, len(Nk)):
     Fk[i]=Nk[i]+Fk[i-1]
-print('Fk   {}   {}   {}   {}   {}  \t'.format(*Fk))
+print('Fk   {}   {}   {}   {}   {} {} \t'.format(*Fk))
 print('------------------------------------')
 
 pk=copy.copy(Nk)
 
 for i in range(0, len(Nk)):
     pk[i]= pk[i]/Fk[len(freq)-1]    
-print('pk  {:1.3f} {:1.3f} {:1.3f} {:1.3f} {:1.3f}\t'.format(*pk))
+print('pk  {:1.3f} {:1.3f} {:1.3f} {:1.3f} {:1.3f} {:1.3f}\t'.format(*pk))
 
 fk=copy.copy(Fk)
 for i in range(0, len(Fk)):
     fk[i]= fk[i]/ Fk[len(freq)-1]
-print('fk  {:1.3f} {:1.3f} {:1.3f} {:1.3f} {:1.3f} \t\n'.format(*fk))
+print('fk  {:1.3f} {:1.3f} {:1.3f} {:1.3f} {:1.3f} {:1.3f}\t\n'.format(*fk))
 
 
 n=len(arrl)
@@ -192,9 +192,10 @@ sumq=0
 for i in range(0, len(w_k)):
     print((np.power((w_k[i]),2))*Nk[i])
     sumq+=(np.power((w_k[i]),2))*Nk[i]
-print(sumq)
+print('sumq: {} '.format(sumq))
 sumq=(1/tot)*sumq
-print(sumq)
+print('sumq/tot: {} '.format(sumq))
+
 
 s_x2=sumq-(m_x**2)
-print('Varianza approssimata:          {:1.2f}\t'.format(s_x2))
+print('Varianza approssimata:          {:1.5f}\t'.format(s_x2))

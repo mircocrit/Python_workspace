@@ -12,11 +12,29 @@ import math as mt
 from scipy.stats.mstats import gmean
 
 
-arrl=np.array([0.04,0.16,0.26,0.29,0.30,0.32,0.32,0.36,0.39,0.42,
-               0.43,0.47,0.48,0.51,0.51,0.51,0.53,0.53,0.54,0.60,
-               0.61,0.63,0.66,0.66,0.70,0.70,0.75,0.78,0.78,0.79,
-               0.79,0.83,0.88,0.89,0.89,0.89,0.90,0.94,0.96])
-rang=np.array([0.005,0.305,0.505,0.605,0.705,0.805,1.005])
+arrl=np.array([14.00, 5.99,26.35,35.95,15.95,24.95,19.95,32.95,59.00,9.95,
+               69.95,61.35,14.95,12.95,16.95,10.95,57.35,29.95,5.95 ,41.95,
+               66.95,19.85,11.95,15.95,50.25,74.65,68.00,69.95])
+
+rang=np.array([5.455 , 15.455, 25.455, 35.455, 45.455, 55.455, 65.455, 75.455])
+
+"""1_media """
+n=len(arrl)
+i=0
+buf=0
+sum=0
+while i<n:
+    sum+=arrl[i]
+    i=i+1
+    if i%10==0:         
+        print(sum-buf)
+        buf=sum
+print('sum:{:1.4f}\t'.format(sum))
+med=(1/n)*sum
+print('Media:                {:1.2f}\t'.format(med))
+
+arrl.sort()
+print('array ordinato:\n{} {} {} {}  {} {} {} {} {} {} \n  {} {} {} {}  {} {} {} {} {} {} \n {} {} {} {}  {} {} {} {}\t' .format(*arrl))
 
 '''0_trasformazione in array + freq'''
 ##arr=list(set(arrl))
@@ -44,10 +62,10 @@ k=copy.copy(rang)
 Nk=copy.copy(freq)
 print('Tabella frequenze')
 
-print('k:{} {} {} {}  {} {} {}\t' .format(*k))
+print('k:{} {} {} {}  {} {} {} {} \t' .format(*k))
 
 print('------------------------------------')
-print('Nk   {}   {}   {}   {}   {}    {}   \t'.format(*Nk))
+print('Nk   {}   {}   {}   {}   {}  {}   {}    \t'.format(*Nk))
 Fk=[]
 for i in range(0, len(k)):
     Fk.append(0)
@@ -55,37 +73,26 @@ for i in range(0, len(k)):
 Fk[0]=Nk[0]
 for i in range(1, len(Nk)):
     Fk[i]=Nk[i]+Fk[i-1]
-print('Fk   {}   {}   {}   {}   {} {}  \t'.format(*Fk))
+print('Fk   {}   {}   {}   {}   {} {}   {} \t'.format(*Fk))
 print('------------------------------------')
 
 pk=copy.copy(Nk)
 
 for i in range(0, len(Nk)):
     pk[i]= pk[i]/Fk[len(freq)-1]    
-print('pk  {:1.3f} {:1.3f} {:1.3f} {:1.3f} {:1.3f} {:1.3f}\t'.format(*pk))
+print('pk  {:1.3f} {:1.3f} {:1.3f} {:1.3f} {:1.3f} {:1.3f} {:1.3f}\t'.format(*pk))
 
 fk=copy.copy(Fk)
 for i in range(0, len(Fk)):
     fk[i]= fk[i]/ Fk[len(freq)-1]
-print('fk  {:1.3f} {:1.3f} {:1.3f} {:1.3f} {:1.3f} {:1.3f}\t\n'.format(*fk))
+print('fk  {:1.3f} {:1.3f} {:1.3f} {:1.3f} {:1.3f} {:1.3f} {:1.3f} \t\n'.format(*fk))
 
 
 n=len(arrl)
 tot=np.sum(freq)
 
-"""1_media """
-i=0
-buf=0
-sum=0
-while i<n:
-    sum+=arrl[i]
-    i=i+1
-    if i%10==0:         
-        print(sum-buf)
-        buf=sum
-print('sum:{:1.4f}\t'.format(sum))
-med=(1/n)*sum
-print('Media:                {:1.2f}\t'.format(med))
+  
+
 
 
 
@@ -93,28 +100,33 @@ print('Media:                {:1.2f}\t'.format(med))
 print('Range:                {:1.2f}\t\n'.format(arrl[len(arrl)-1]-arrl[0]))
 
 
-"""3-mediana dispari"""
+"""3-mediana pari"""
 
-print('Tot (dispari):          {}\t'.format(tot))
+print('Tot (pari):          {}\t'.format(tot))
 
-mediana=((tot+1)/2)
-print('Mediana :      {:1.3f}\t'.format(arrl[int(mediana-1)]))
+mediana=((tot)/2)
+print('Quantile mediana pari:      {}\t'.format(mediana))
+mediana=arrl[int(mediana-1)] + arrl[int(mediana)]
+mediana=mediana/2
+
+print('Mediana :      {:1.3f}\t'.format(mediana))
 
 
 
 
-"""4-1_quartile dispari"""
+"""4-1_quartile pari"""
 quartile_1= (tot+1)/4
 quartile_1=arrl[int(quartile_1-1)] + arrl[int(quartile_1)]
 quartile_1=quartile_1/2
 print('1_quartile:          {:1.3f}\t'.format(quartile_1))
 
-"""4-3_quartile dispari"""
+"""4-3_quartile pari"""
 
 quartile_3= 3*((tot+1)/4)
 quartile_3=arrl[int(quartile_3-1)] + arrl[int(quartile_3)]
 quartile_3=quartile_3/2
 print('3_quartile:          {:1.3f}\t\n'.format(quartile_3))
+
 
 print('istogramma')
 """altezze"""
@@ -125,10 +137,10 @@ j=0
 for i in range(0, len(hk)):
     hk[i]=(Nk[i])/(k[j+1]-k[j]) 
     j+=1
-print('akbk:  {:1.2f} {:1.2f} {:1.2f}  {:1.2f}  {:1.2f} {:1.2f}  {:1.2f}           \t' .format(*k))
+print('akbk:  {} {} {}  {}  {} {}  {} {}          \t' .format(*k))
 print('-------------------------------------------')  
-print('Nk:    {:1.2f} {:1.2f} {:1.2f} {:1.2f} {:1.2f} {:1.2f}   \t'.format(*Nk))
-print('pk:    {:1.2f} {:1.2f} {:1.2f} {:1.2f} {:1.2f} {:1.2f} \t'.format(*pk))
+print('Nk:    {} {} {} {} {} {} {}  \t'.format(*Nk))
+print('pk:    {:1.3f} {:1.3f} {:1.3f} {:1.3f} {:1.3f} {:1.3f} {:1.3f}\t'.format(*pk))
 vector=[]
 for i in range(0, len(freq)):
     vector.append(0)
@@ -137,8 +149,8 @@ for i in range(0, len(hk)):
      vector[i]= k[j+1]-k[j]
      j+=1
 print('-------------------------------------------')  
-print('bk-ak: {:1.2f} {:1.2f} {:1.2f} {:1.2f} {:1.2f} {:1.2f}\t'.format(*vector))
-print('Hk:    {:1.2f} {:1.2f} {:1.2f} {:1.2f} {:1.2f} {:1.2f}\t'.format(*hk))
+print('bk-ak: {:1.0f} {:1.0f} {:1.0f} {:1.0f} {:1.0f} {:1.0f} {:1.0f}\t'.format(*vector))
+print('Hk:    {:1.1f} {:1.1f} {:1.1f} {:1.1f} {:1.1f} {:1.1f} {:1.1f}\t'.format(*hk))
 
 
 
@@ -152,7 +164,7 @@ for i in range(0, len(freq)):
 for i in range(0, len(rang)-1):
     w_k[i]=((rang[i+1]+rang[i])/2)
 print('-------------------------------------------')  
-print('wk_: {:1.2f} {:1.2f} {:1.2f} {:1.2f} {:1.2f} {:1.2f} \t'.format(*w_k))
+print('wk_: {} {} {} {} {} {} {}\t'.format(*w_k))
 
 print('pk*wk_: ',end =" ")
 for i in range(0, len(rang)-1):
