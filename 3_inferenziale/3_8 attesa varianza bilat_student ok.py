@@ -7,6 +7,7 @@ Created on Fri Mar 15 16:25:48 2019
 """intervallo di fiducia per l'attesa""
 """""
 import numpy as np
+import tavole
 
 arr=np.array([2.02,-0.87,-1.68,-1.39,-0.05,-2.69,3.14,-2.46,-0.05,1.83])
 n=len(arr)
@@ -42,8 +43,13 @@ print('')
 """4_Student"""
 studalfa=1-(alfa/2)
 print('studalfa:     {:1.3f}    n-1:   {:1.0f} \t'.format(studalfa,n-1))
+i=n-2
+if studalfa==0.950:    j=0
+elif studalfa==0.975:    j=1
+elif studalfa==0.990:    j=2
+elif studalfa==0.995:    j=3
 
-student=2.26216
+student= studen[i,j]
 print('student:     {:1.5f}  \t'.format(student))
 
 """5_delta"""
@@ -57,14 +63,39 @@ print('------------------------------------------')
 print('2 Intervallo di fiducia di livello α per la varianza')
 print('Varianza campionaria:             {:1.3f}\t'.format(varc))
 print('n-1: {}\t'.format(n-1))
-print('Alfa/2:       {:1.3f}\t'.format(alfa/2))
-print('1-Alfa/2:     {:1.3f}\t'.format(1-(alfa/2)))
-chi1meno=19.02277
-chialfa=2.70039
-print ('chi1-α/2:     {:1.3f}\t'.format(chi1meno))
-print ('chiα/2:     {:1.3f}\t'.format(chialfa))
-Usigma= ((n-1)*varc)/chi1meno
-Vsigma=((n-1)*varc)/chialfa
+chialfa1=alfa/2
+chialfa2=(1-(alfa/2))
+print('Alfa/2:       {:1.3f}\t'.format(chialfa1))
+print('1-Alfa/2:     {:1.3f}\t'.format(chialfa2))
+print('------------------------------------------')
+
+i=n-2
+if   chialfa1==0.005:    j=0
+elif chialfa1==0.010:    j=1
+elif chialfa1==0.025:    j=2
+elif chialfa1==0.050:    j=3
+elif chialfa1==0.950:    j=4
+elif chialfa1==0.975:    j=5
+elif chialfa1==0.990:    j=6
+elif chialfa1==0.995:    j=7
+
+chi1= chiq[i,j]
+
+if   chialfa2==0.005:    j=0
+elif chialfa2==0.010:    j=1
+elif chialfa2==0.025:    j=2
+elif chialfa2==0.050:    j=3
+elif chialfa2==0.950:    j=4
+elif chialfa2==0.975:    j=5
+elif chialfa2==0.990:    j=6
+elif chialfa2==0.995:    j=7
+
+chi2= chiq[i,j]
+
+print ('chi1-α/2:     {:1.3f}\t'.format(chi2))
+print ('chiα/2:     {:1.3f}\t'.format(chi1))
+Usigma= ((n-1)*varc)/chi1
+Vsigma=((n-1)*varc)/chi2
 print ('Usigma:     {:1.3f}\t'.format(Usigma))
 print ('Vsigma:     {:1.3f}\t'.format(Vsigma))
 print('Interv fiducia varianza :             {:1.3f},{:1.3f}\t'.format(Usigma,Vsigma))

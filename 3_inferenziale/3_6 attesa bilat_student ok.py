@@ -43,9 +43,13 @@ print('')
 """4_Student"""
 studalfa=1-(alfa/2)
 print('studalfa:     {:1.3f}    n-1:   {:1.0f} \t'.format(studalfa,n-1))
+i=n-2
+if studalfa==0.950:    j=0
+elif studalfa==0.975:    j=1
+elif studalfa==0.990:    j=2
+elif studalfa==0.995:    j=3
 
-7
-student=2.093
+student= studen[i,j]
 print('student:     {:1.5f}  \t'.format(student))
 
 """5_delta"""

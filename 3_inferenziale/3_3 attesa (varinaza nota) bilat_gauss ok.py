@@ -8,6 +8,7 @@ Created on Fri Mar 15 16:25:48 2019
 """1__intervallo di fiducia per l'attesa""
 """""
 import numpy as np
+import tavole
 
 arr=np.array([4.09,4.56,5.01,5.49,4.82,5.56,3.95,4.04,2.63,
               3.78,3.58,4.52,4.86,3.65,4.44,4.62,3.97,3.63])
@@ -36,7 +37,16 @@ print('')
 """4_Gauss"""
 normalfa=1-(alfa/2)
 print('normalfa:     {:1.3f}    n-1:   {:1.0f} \t'.format(normalfa,n-1))
-qnormale=1.96
+flag=0
+for i in range(0,30):
+    if flag==0:
+        for j in range(0,10):
+            if flag==0:
+                a=(normstd[i,j]*1000)
+                if normalfa==((int(a))/1000):
+                    qnormale=(j/100)+(i/10)
+                    flag=1
+                    print(i,j,normstd[i,j])
 print('gauss:     {:1.5f}  \t'.format(qnormale))
 
 """5_delta"""
@@ -48,7 +58,6 @@ print('--------------------------------------------')
 print('2_Test bilaterale di gauss di livello alfa')
 
 """2__test bilaterale di gauss di livello alfa"""
-qnormale=1.96
 med_o=4
 print('uo:             {}'.format(med_o))
 Uo=((med-med_o)/devstdd)*np.sqrt(n)
@@ -63,7 +72,13 @@ print('--------------------------------------------')
 print('3 significatività test alfa di s')
 """3__significatività test alfa di s"""
 print('Uo:                     {:1.3f}  \t'.format(np.abs(Uo)))
-fiUo=0.88877
+
+ptint=int(Uo*10)
+U__=Uo-((int(Uo*10))/10)
+ptdec=int(U__*100)
+print(ptint,ptdec)
+fiUo=normstd[ptint,ptdec]
+
 print('norm stdd(Uo):                 {:1.3f}  \t'.format(fiUo))
 alfas=2*(1-fiUo)
 print('alfas:                  {:1.3f}  \t'.format(alfas))

@@ -7,6 +7,9 @@ Created on Fri Mar 15 16:25:48 2019
 """1__intervallo di fiducia per l'attesa""
 """""
 import numpy as np
+import tavole
+
+
 
 n=200
 alfa=0.01
@@ -24,10 +27,19 @@ print('Deviazione standard :     {:1.3f}\t'.format(devstdd))
 print('')
 
 """4_Student"""
+
 studalfa=1-(alfa/2)
 print('studalfa:     {:1.3f}    n-1:   {:1.0f} \t'.format(studalfa,n-1))
-
-student=2.58
+flag=0
+for i in range(0,30):
+    if flag==0:
+        for j in range(0,10):
+            if flag==0:
+                a=(normstd[i,j]*1000)
+                if studalfa==((int(a))/1000):
+                    student=(j/100)+(i/10)
+                    flag=1
+                    print(i,j,normstd[i,j])
 print('student:(uguale a normale standard)     {:1.5f}  \t'.format(student))
 
 
