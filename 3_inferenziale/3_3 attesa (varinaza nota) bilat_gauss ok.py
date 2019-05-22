@@ -10,8 +10,8 @@ Created on Fri Mar 15 16:25:48 2019
 import numpy as np
 import tavole
 
-arr=np.array([4.09,4.56,5.01,5.49,4.82,5.56,3.95,4.04,2.63,
-              3.78,3.58,4.52,4.86,3.65,4.44,4.62,3.97,3.63])
+arr=np.array([4.09,4.56,5.01,5.49,4.82,5.56,3.95,4.04,2.63,3.78,
+              3.58,4.52,4.86,3.65,4.44,4.62,3.97,3.63])
 n=len(arr)
 alfa=0.05
 var=1
@@ -19,12 +19,18 @@ var=1
 print('1: intervallo di fiducia per attesa')
 """1_media """
 i=0
+buf=0
 sum=0
 while i<n:
     sum+=arr[i]
     i=i+1
+    if i%10==0:         
+        print(sum-buf)
+        buf=sum
+print('sum:{:1.4f}\t'.format(sum))
 med=(1/n)*sum
 print('Media:                {:1.3f}\t'.format(med))
+
 
 
 print('Varianza :             {:1.3f}\t'.format(var))
@@ -46,7 +52,7 @@ for i in range(0,30):
                 if normalfa==((int(a))/1000):
                     qnormale=(j/100)+(i/10)
                     flag=1
-                    print(i,j,normstd[i,j])
+                    #kprint(i,j,normstd[i,j])
 print('gauss:     {:1.5f}  \t'.format(qnormale))
 
 """5_delta"""

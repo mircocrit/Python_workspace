@@ -16,10 +16,15 @@ alfa=0.05
 print('Intervallo di fiducia di livello α per la media')
 """1_media """
 i=0
+buf=0
 sum=0
 while i<n:
     sum+=arr[i]
     i=i+1
+    if i%10==0:         
+        print(sum-buf)
+        buf=sum
+print('sum:{:1.4f}\t'.format(sum))
 med=(1/n)*sum
 print('Media:                {:1.3f}\t'.format(med))
 
@@ -29,6 +34,7 @@ sumq=0
 while i<n:
     sumq+=arr[i]**2
     i=i+1
+print(sumq)
 sumq=(1/n)*sumq
 print('Media con quadrati:      {:1.3f}\t'.format(sumq))
 print('Media al quadrato:             {:1.3f}\t'.format(med**2))
