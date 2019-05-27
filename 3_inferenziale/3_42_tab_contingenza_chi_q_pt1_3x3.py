@@ -11,11 +11,11 @@ import math as mt
 import tavole
 import scipy.special as bino
 
-arr= np.array([[20,44,17,9],
-              [4,17,7,12],
-              [10,31,14,5]])
+arr= np.array([[30,68,10],
+              [61,78,21],
+              [98,43,21]])
 r=3
-c=4
+c=3
 alfa=0.05
 #print(n)
 
@@ -23,62 +23,63 @@ alfa=0.05
 j_=copy.copy(arr)
 
 print('Tabella frequenze')
-for i in range (0,r):    
-    print('    {}      {}      {}     {} \n ' .format(*j_[i]))
+for i in range (0,3):    
+    print('    {}      {}      {}     \n ' .format(*j_[i]))
 print('-----------------------------------')
+#print('Nj  {}     {}     {}     {}   \t'.format(*Nj))
 
 pj=copy.copy(arr)
 
 print('Margx:')
-margx=np.array([0,0,0,0])
-for i in range (0,c): 
+margx=np.array([0,0,0])
+for i in range (0,len(margx)): 
     sum=0
-    for j in range (0,r):
+    for j in range (0,len(margx)):
         sum+=j_[j][i]       
     margx[i]=sum
     sum=0
-print('    {}      {}      {}    {} \n ' .format(*margx))
-
+print('    {}      {}      {}     \n ' .format(*margx))
 
 print('Margy:')
 margy=np.array([0,0,0])
-for i in range (0,r):
+for i in range (0,len(margy)):
         margy[i]=np.sum(j_[i])
-print('      {}\n\n      {}\n\n      {}\n\n  ' .format(*margy))
-
+print('      {}\n\n      {}\n\n      {}\n ' .format(*margy))
 
 tot=np.sum(margx)
 print(tot)
 
 print('\nTabella npjqk')
-npjqk=np.array([[0.000,0.000,0.000,0.000],
-                [0.000,0.000,0.000,0.000],
-                [0.000,0.000,0.000,0.000]])
+npjqk=np.array([[0.000,0.000,0.000],
+                [0.000,0.000,0.000],
+                [0.000,0.000,0.000]])
 
 
-for i in range (0,r): 
-    for j in range (0,c):
+
+
+for i in range (0,len(margx)): 
+    for j in range (0,len(margx)):
         npjqk[i,j]=(margx[j]*margy[i])/tot
  
 
-for i in range (0,r):    
-    print('    {:1.3f}      {:1.3f}      {:1.3f}     {:1.3f}\n ' .format(*npjqk[i]))
+for i in range (0,3):    
+    print('    {:1.3f}      {:1.3f}      {:1.3f}     \n ' .format(*npjqk[i]))
     
     
 print('Tabella Pearson')
-Pearson=np.array([[0.0000,0.0000,0.0000,0.0000],
-                [0.0000,0.0000,0.0000,0.0000],
-                [0.0000,0.0000,0.0000,0.0000]])
+Pearson=np.array([[0.0000,0.0000,0.0000],
+                [0.0000,0.0000,0.0000],
+                [0.0000,0.0000,0.0000]])
 
-for i in range (0,r): 
-    for j in range (0,c):#usare _j  npjqk
+for i in range (0,len(margx)): 
+    for j in range (0,len(margx)):#usare _j  npjqk
         Pearson[i,j]=np.power((j_[i][j]-npjqk[i][j]),2)/npjqk[i][j]
         
-for i in range (0,r):    
-    print('    {:1.3f}      {:1.3f}      {:1.3f}     {:1.3f} \n ' .format(*Pearson[i]))
+for i in range (0,3):    
+    print('    {:1.3f}      {:1.3f}      {:1.3f}     \n ' .format(*Pearson[i]))
 
 Ko=0    
-for i in range (0,r): 
+for i in range (0,3): 
     Ko+=np.sum(Pearson[i])
 print('Ko  {:1.3f} \t\n'.format(Ko))
 

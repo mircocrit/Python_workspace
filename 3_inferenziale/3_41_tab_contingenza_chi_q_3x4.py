@@ -67,7 +67,7 @@ for i in range (0,r):
  
 
 for i in range (0,r):    
-    print('    {:1.2f}      {:1.2f}      {:1.2f}     \n ' .format(*npjqk[i]))
+    print('    {:1.3f}      {:1.3f}      {:1.3f}     \n ' .format(*npjqk[i]))
     
     
 print('Tabella Pearson')
@@ -86,7 +86,7 @@ for i in range (0,r):
 Ko=0    
 for i in range (0,r): 
     Ko+=np.sum(Pearson[i])
-print('Ko  {:1.2f} \t\n'.format(Ko))
+print('Ko  {:1.3f} \t\n'.format(Ko))
 
 print('**************************************')
 print('Chi quadro 1-alfa:')

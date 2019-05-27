@@ -33,7 +33,7 @@ for i in range(0, len(Nj)):
 for j in range(0, len(Nj)):
     pj[j]= (mt.exp(-poiss))*((poiss**j)/(mt.factorial(j)))
 #print(pk)
-print('pj  {:1.3f} {:1.3f} {:1.3f} {:1.3f} {:1.3f}  {:1.3f}  {:1.3f} {:1.3f}  {:1.3f}  {:1.3f}\t'.format(*pj))
+print('pj  {:1.3f} {:1.3f} {:1.7f} {:1.3f} {:1.3f}  {:1.3f}  {:1.3f} {:1.3f}  {:1.3f}  {:1.3f}\t'.format(*pj))
 
 npj=[]
 for i in range(0, len(Nj)):
@@ -42,7 +42,7 @@ for i in range(0, len(Nj)):
 n=np.sum(freq)
 for i in range(0, len(Nj)):
     npj[i]= (pj[i]*n)
-print('npj  {:1.1f}  {:1.1f}   {:1.1f}  {:1.1f}  {:1.1f}  {:1.1f}    {:1.1f}   {:1.1f}   {:1.1f}    {:1.1f} \t\n'.format(*npj))
+print('npj  {:1.3f}  {:1.3f}   {:1.3f}  {:1.3f}  {:1.3f}  {:1.3f}    {:1.3f}   {:1.3f}   {:1.3f}    {:1.3f} \t\n'.format(*npj))
 print('-----------------------------------------------------------')
 
 n=len(arr)
@@ -95,7 +95,7 @@ while k<len(Nj)-1:#npj
 
 print('j2   {:1.1f}      {:1.0f}      {:1.0f}      {:1.0f}      {:1.0f}      {:1.0f}      {:1.0f}      {:1.0f}\t'.format(*j2))       
 print('qj  {:1.3f}  {:1.3f} {:1.3f}  {:1.3f}  {:1.3f}  {:1.3f}   {:1.3f}  {:1.3f}\t'.format(*qj))
-print('nqj  {:1.1f}   {:1.1f}  {:1.1f}   {:1.1f}   {:1.1f}   {:1.1f}    {:1.1f}     {:1.1f}\t'.format(*nqj))
+print('nqj  {:1.3f}  {:1.3f}   {:1.3f}  {:1.3f}  {:1.3f}  {:1.3f}    {:1.3f}   {:1.3f}\t'.format(*nqj))
 print('Mj  {:1.0f}     {:1.0f}    {:1.0f}     {:1.0f}     {:1.0f}       {:1.0f}       {:1.0f}      {:1.0f}\t'.format(*Mj))
 print('--------------------------------------------------------')
  

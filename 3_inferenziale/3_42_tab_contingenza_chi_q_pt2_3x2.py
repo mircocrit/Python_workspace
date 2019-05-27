@@ -11,11 +11,10 @@ import math as mt
 import tavole
 import scipy.special as bino
 
-arr= np.array([[20,44,17,9],
-              [4,17,7,12],
-              [10,31,14,5]])
-r=3
-c=4
+arr= np.array([[92,108,20],
+              [97,81,32]])
+r=2
+c=3
 alfa=0.05
 #print(n)
 
@@ -24,37 +23,36 @@ j_=copy.copy(arr)
 
 print('Tabella frequenze')
 for i in range (0,r):    
-    print('    {}      {}      {}     {} \n ' .format(*j_[i]))
+    print('    {}      {}      {}     \n ' .format(*j_[i]))
 print('-----------------------------------')
+#print('Nj  {}     {}     {}     {}   \t'.format(*Nj))
 
 pj=copy.copy(arr)
 
 print('Margx:')
-margx=np.array([0,0,0,0])
+margx=np.array([0,0,0])
 for i in range (0,c): 
     sum=0
     for j in range (0,r):
         sum+=j_[j][i]       
     margx[i]=sum
     sum=0
-print('    {}      {}      {}    {} \n ' .format(*margx))
+print('    {}      {}      {}     \n ' .format(*margx))
 
 
 print('Margy:')
-margy=np.array([0,0,0])
+margy=np.array([0,0])
 for i in range (0,r):
         margy[i]=np.sum(j_[i])
-print('      {}\n\n      {}\n\n      {}\n\n  ' .format(*margy))
+print('      {}\n\n      {}\n\n ' .format(*margy))
 
 
 tot=np.sum(margx)
 print(tot)
 
 print('\nTabella npjqk')
-npjqk=np.array([[0.000,0.000,0.000,0.000],
-                [0.000,0.000,0.000,0.000],
-                [0.000,0.000,0.000,0.000]])
-
+npjqk=np.array([[0.000,0.000,0.000],
+                [0.000,0.000,0.000]])
 
 for i in range (0,r): 
     for j in range (0,c):
@@ -62,25 +60,24 @@ for i in range (0,r):
  
 
 for i in range (0,r):    
-    print('    {:1.3f}      {:1.3f}      {:1.3f}     {:1.3f}\n ' .format(*npjqk[i]))
+    print('    {:1.3f}      {:1.3f}      {:1.3f}     \n ' .format(*npjqk[i]))
     
     
 print('Tabella Pearson')
-Pearson=np.array([[0.0000,0.0000,0.0000,0.0000],
-                [0.0000,0.0000,0.0000,0.0000],
-                [0.0000,0.0000,0.0000,0.0000]])
+Pearson=np.array([[0.0000,0.0000,0.0000],
+                [0.0000,0.0000,0.0000]])
 
 for i in range (0,r): 
     for j in range (0,c):#usare _j  npjqk
         Pearson[i,j]=np.power((j_[i][j]-npjqk[i][j]),2)/npjqk[i][j]
         
 for i in range (0,r):    
-    print('    {:1.3f}      {:1.3f}      {:1.3f}     {:1.3f} \n ' .format(*Pearson[i]))
+    print('    {:1.3f}      {:1.3f}      {:1.3f}     \n ' .format(*Pearson[i]))
 
 Ko=0    
 for i in range (0,r): 
     Ko+=np.sum(Pearson[i])
-print('Ko  {:1.3f} \t\n'.format(Ko))
+print('Ko  {:1.2f} \t\n'.format(Ko))
 
 print('**************************************')
 print('Chi quadro 1-alfa:')

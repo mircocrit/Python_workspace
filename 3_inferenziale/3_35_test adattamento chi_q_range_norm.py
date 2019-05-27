@@ -86,16 +86,16 @@ for j in range(0, len(Nj)):
             print('3.4)  (1-fi({:1.3f})) - (1-fi({:1.3f}))  \n'.format(np.abs(part1),np.abs(part0)))
             
 provv=[1-0.92922,                   #0.071
-      (1-0.73565) -  (1-0.92922),   #0.192
+      (1-0.73565) -  (1-0.92785),   #0.192
       (0.57926) - (1-0.73565),      #0.316,
        0.84849 - (0.57926),         #0.270,
        1-0.84849]                   #0.151
        
-
+print('-------------------------------------------------')
 for j in range(0, len(Nj)):
     pj[j]=provv[j]
-print('pj  {:1.3f}  {:1.3f}  {:1.3f}  {:1.3f}  {:1.3f}\t'.format(*pj))
-print('***********************************************')
+print('pj  {:1.4f}  {:1.4f}  {:1.4f}  {:1.4f}  {:1.4f}\t'.format(*pj))
+print('')
 
 npj=[]
 for i in range(0, len(Nj)):
@@ -104,7 +104,7 @@ for i in range(0, len(Nj)):
 n=np.sum(freq)
 for i in range(0, len(Nj)):
     npj[i]= (pj[i]*n)
-print('npj  {:1.1f}  {:1.1f}   {:1.1f} {:1.1f}  {:1.1f} \t\n'.format(*npj))
+print('npj  {:1.3f}  {:1.3f}   {:1.3f} {:1.3f}  {:1.3f} \t\n'.format(*npj))
 print('-----------------------------------------------------------')
 
 
@@ -117,7 +117,7 @@ for k in range (0,len(Nj)):#npj
     K[k]=(np.power((Nj[k]-(npj[k])),2))/(npj[k])
  
 Ko=np.sum(K)    
-print('Mj  {:1.3f}  {:1.3f} {:1.3f} {:1.3f} {:1.3f}   \t'.format(*K))
+print('Mj  {:1.4f}  {:1.4f} {:1.4f} {:1.4f} {:1.4f}   \t'.format(*K))
 print('Ko  {:1.3f} \t\n'.format(Ko))
 
 
@@ -134,7 +134,7 @@ chialfa=(1-(alfa))
 print('1-Alfa x:     {:1.3f}\t'.format(chialfa))
 print('------------------------------------------')
 
-i=n-2
+i=n-2-2
 
 if   chialfa==0.005:    j=0
 elif chialfa==0.010:    j=1

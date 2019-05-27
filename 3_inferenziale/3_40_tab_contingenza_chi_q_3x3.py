@@ -63,7 +63,7 @@ for i in range (0,len(margx)):
  
 
 for i in range (0,3):    
-    print('    {:1.2f}      {:1.2f}      {:1.2f}     \n ' .format(*npjqk[i]))
+    print('    {:1.3f}      {:1.3f}      {:1.3f}     \n ' .format(*npjqk[i]))
     
     
 print('Tabella Pearson')
@@ -76,12 +76,12 @@ for i in range (0,len(margx)):
         Pearson[i,j]=np.power((j_[i][j]-npjqk[i][j]),2)/npjqk[i][j]
         
 for i in range (0,3):    
-    print('    {:1.3f}      {:1.3f}      {:1.3f}     \n ' .format(*Pearson[i]))
+    print('    {:1.4f}      {:1.4f}      {:1.4f}     \n ' .format(*Pearson[i]))
 
 Ko=0    
 for i in range (0,3): 
     Ko+=np.sum(Pearson[i])
-print('Ko  {:1.2f} \t\n'.format(Ko))
+print('Ko  {:1.3f} \t\n'.format(Ko))
 
 print('**************************************')
 print('Chi quadro 1-alfa:')

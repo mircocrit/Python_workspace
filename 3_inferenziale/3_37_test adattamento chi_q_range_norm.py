@@ -92,22 +92,22 @@ provv=[1-0.92073,
        0.76115-0.50000,
        0.92073-0.76115,      
        1-0.92073]
-
+print('****************************************************************')
 for j in range(0, len(Nj)):
     pj[j]=provv[j]
-print('pj  {:1.3f}  {:1.3f}  {:1.3f}  {:1.3f}  {:1.3f}  {:1.3f}\t'.format(*pj))
-print('***********************************************')
+print('pj  {:1.4f}  {:1.4f}  {:1.4f}  {:1.4f}  {:1.4f}  {:1.4f}\t'.format(*pj))
+print('')
 
 npj=[]
 for i in range(0, len(Nj)):
     npj.append(0)
     
 n=np.sum(freq)
-print(n)
+
 for i in range(0, len(Nj)):
     npj[i]= (pj[i]*n)
-print('npj  {:1.1f}  {:1.1f}   {:1.1f} {:1.1f}  {:1.1f}   {:1.1f}\t\n'.format(*npj))
-print('-----------------------------------------------------------')
+print('npj  {:1.4f}  {:1.4f}   {:1.4f} {:1.4f}  {:1.4f}   {:1.4f}\t\n'.format(*npj))
+print('-----------------------------------------------------------------')
 
 
 
@@ -119,7 +119,7 @@ for k in range (0,len(Nj)):#npj
     K[k]=(np.power((Nj[k]-(npj[k])),2))/(npj[k])
  
 Ko=np.sum(K)    
-print('Mj  {:1.3f}  {:1.3f} {:1.3f} {:1.3f} {:1.3f} {:1.3f}    \t'.format(*K))
+print('Mj  {:1.4f}  {:1.4f} {:1.4f} {:1.4f} {:1.4f} {:1.4f}    \t'.format(*K))
 print('Ko  {:1.3f} \t\n'.format(Ko))
 
 

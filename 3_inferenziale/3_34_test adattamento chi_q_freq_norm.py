@@ -79,8 +79,8 @@ for i in range(0, len(Nj)):
 
 for j in range(0, len(Nj)):
     pj[j]= (gauss_function((j_[j+1]-med)/var)-gauss_function((j_[j]-med)/var))
-print('pj  {:1.3f}  {:1.3f}  {:1.3f}   \t'.format(*pj))
-print('***********************************************')
+print('pj  {:1.4f}  {:1.4f}  {:1.4f}   \t'.format(*pj))
+print('')
 
 
 
@@ -92,7 +92,7 @@ for i in range(0, len(Nj)):
 n=np.sum(freq)
 for i in range(0, len(Nj)):
     npj[i]= (pj[i]*n)
-print('npj  {:1.1f}  {:1.1f}   {:1.1f}  \t\n'.format(*npj))
+print('npj  {:1.3f}  {:1.3f}   {:1.3f}  \t\n'.format(*npj))
 print('-----------------------------------------------------------')
 
 
@@ -105,7 +105,7 @@ for k in range (0,len(Nj)):#npj
     K[k]=(np.power((Nj[k]-(npj[k])),2))/(npj[k])
  
 Ko=np.sum(K)    
-print('Mj  {:1.3f}  {:1.3f} {:1.3f}   \t'.format(*K))
+print('Mj  {:1.4f}  {:1.4f} {:1.4f}   \t'.format(*K))
 print('Ko  {:1.3f} \t\n'.format(Ko))
 
 

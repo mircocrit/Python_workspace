@@ -12,29 +12,47 @@ import tavole
 import scipy.special as bino
 
 arr= np.array([0,1,2,3,4])
-freq= np.array([4775,3919,1143,156,7])
+freq= np.array([6,201,2400,14644,32749])
 bin_n=4
-bin_p=1/6
+
 alfa=0.05
 n=np.sum(freq)
 print(n)
+
+q=1
+
+
+
+
+
+
+
 
 """0_tabella frequenze"""
 j_=copy.copy(arr)
 Nj=copy.copy(freq)
 print('Tabella frequenze')
-print(' j    {}      {}      {}      {}       {}     \t' .format(*j_))
-print('')
-print('Nj  {}     {}     {}     {}     {}     \t'.format(*Nj))
+print(' j  {}     {}     {}      {}     {}\t' .format(*j_))
+print('-----------------------------------')
+print('Nj  {}     {}     {}     {}     {}\t\n'.format(*Nj))
+
+'''Stimatore'''
+bin_p=0
+for i in range(0,len(Nj)):
+       bin_p=bin_p + j_[i]*Nj[i]
+       
+bin_p=1/(bin_n*n)*bin_p
+print('Stimatore:     {:1.4f}'.format(bin_p))
+
 
 pj=[]
 for i in range(0, len(Nj)):
     pj.append(0)
-print('-----------------------------------')
+
 for j in range(0, len(Nj)):
     pj[j]= ((bino.binom(bin_n, j)) * (np.power(bin_p,j)) * (np.power(1-bin_p,bin_n-j)))
-print("")
-print('pj  {:1.4f}    {:1.4f}    {:1.4f}     {:1.4f}     {:1.4f}  \t'.format(*pj))
+#print(pk)
+print('pj  {:1.6f}  {:1.6f}  {:1.5f}  {:1.4f}  {:1.4f}\t'.format(*pj))
 
 npj=[]
 for i in range(0, len(Nj)):
@@ -43,11 +61,13 @@ for i in range(0, len(Nj)):
 n=np.sum(freq)
 for i in range(0, len(Nj)):
     npj[i]= (pj[i]*n)
-print('npj  {:1.2f}  {:1.2f}   {:1.2f}   {:1.2f}  {:1.2f}  \t\n'.format(*npj))
+print('npj  {:1.3f}  {:1.3f}   {:1.2f}   {:1.1f}  {:1.1f}\t\n'.format(*npj))
 print('-----------------------------------------------------------')
 
 n=len(arr)
 tot=np.sum(freq)
+
+
 
 
 K=[]#statistica di Pearson
@@ -58,17 +78,17 @@ for k in range (0,len(Nj)):#npj
     K[k]=(np.power((Nj[k]-(npj[k])),2))/(npj[k])
  
 Ko=np.sum(K)    
-print('Kj  {:1.3f}  {:1.3f} {:1.3f}  {:1.3f}   {:1.3f}\t'.format(*K))
+print('Mj  {:1.3f}  {:1.3f} {:1.3f}  {:1.4f}  {:1.4f} \t'.format(*K))
 print('Ko  {:1.3f} \t\n'.format(Ko))
 
 n=len(Nj)
 print('1 Chi quadro 1-alfa')
-print('n-1: {}\t'.format(n-1))
+print('n-q-1: {}\t'.format(n-q-1))
 chialfa=(1-(alfa))
 print('1-Alfa x:     {:1.3f}\t'.format(chialfa))
 print('------------------------------------------')
 
-i=n-2
+i=n-2-q
 
 if   chialfa==0.005:    j=0
 elif chialfa==0.010:    j=1

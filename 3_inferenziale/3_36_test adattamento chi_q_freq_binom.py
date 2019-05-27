@@ -33,8 +33,8 @@ for i in range(0, len(Nj)):
 
 for j in range(0, len(Nj)):
     pj[j]= ((bino.binom(bin_n, j)) * (np.power(bin_p,j)) * (np.power(1-bin_p,bin_n-j)))
-#print(pk)
-print('pj  {:1.2f}  {:1.2f}  {:1.2f}  {:1.2f}  {:1.2f}  {:1.2f}  {:1.2f}\t'.format(*pj))
+print("")
+print('pj  {:1.4f}  {:1.4f}  {:1.4f}  {:1.4f}  {:1.4f}  {:1.5f}  {:1.5f}\t'.format(*pj))
 
 npj=[]
 for i in range(0, len(Nj)):
@@ -43,8 +43,8 @@ for i in range(0, len(Nj)):
 n=np.sum(freq)
 for i in range(0, len(Nj)):
     npj[i]= (pj[i]*n)
-print('npj  {:1.1f}  {:1.1f}   {:1.1f}   {:1.1f}  {:1.1f}  {:1.1f}  {:1.1f}\t\n'.format(*npj))
-print('-----------------------------------------------------------')
+print('npj  {:1.3f}  {:1.3f}  {:1.3f}  {:1.3f}  {:1.3f}  {:1.4f}  {:1.4f}\t\n'.format(*npj))
+print('***************************************************************')
 
 n=len(arr)
 tot=np.sum(freq)
@@ -98,8 +98,8 @@ while k<len(Nj)-1:#npj
 
 print('j2   {:1.0f}      {:1.0f}      {:1.0f}      {:1.0f}      {:1.0f}      {:1.0f}  \t'.format(*j2))       
 print('qj  {:1.4f}  {:1.4f} {:1.4f}  {:1.4f}  {:1.4f}   {:1.4f} \t'.format(*qj))
-print('nqj  {:1.1f}   {:1.1f}  {:1.1f}   {:1.1f}   {:1.1f}   {:1.1f}    \t'.format(*nqj))
-print('Mj  {:1.0f}     {:1.0f}    {:1.0f}     {:1.0f}     {:1.0f}     {:1.0f}\t'.format(*Mj))
+print('nqj  {:1.4f}   {:1.4f}  {:1.4f}   {:1.4f}   {:1.4f}   {:1.4f}    \t'.format(*nqj))
+print('Mj  {:1.0f}       {:1.0f}       {:1.0f}       {:1.0f}       {:1.0f}       {:1.0f}\t'.format(*Mj))
 print('--------------------------------------------------------')
  
 
@@ -114,7 +114,7 @@ for k in range (0,len(Nj)-1):#npj
     K[k]=(np.power((Mj[k]-(nqj[k])),2))/(nqj[k])
  
 Ko=np.sum(K)    
-print('Kj  {:1.3f}  {:1.3f} {:1.3f}  {:1.3f}  {:1.3f}\t'.format(*K))
+print('Kj  {:1.3f}  {:1.3f} {:1.3f}  {:1.3f}  {:1.3f}  {:1.3f}\t'.format(*K))
 print('Ko  {:1.3f} \t\n'.format(Ko))
 
 n=len(j2)
